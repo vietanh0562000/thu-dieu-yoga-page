@@ -7,8 +7,9 @@
   .site-header__desktop{display:none}
   .site-header__mobile{display:block}
 }
-.lang-switch{height:var(--control-h-sm);min-width:var(--control-h-sm);padding:0 12px;border-radius:var(--radius-pill);font:var(--type-nav);color:var(--forest-900);cursor:pointer}
-.mobile-nav__sheet .lang-switch{align-self:flex-start;margin-top:16px;border-color:var(--line)}
+.header-button{height:var(--control-h-sm);min-width:var(--control-h-sm);padding:0 16px;border-radius:var(--radius-pill);font:var(--type-nav);text-transform:uppercase;color:var(--forest-900);cursor:pointer}
+.mobile-nav__sheet .header-button{align-self:flex-start;margin-top:16px;border-color:var(--line)}
+.boot{min-height:100vh}
 
 /* Inner page hero */
 .page-hero{position:relative;margin:10px 10px 0;padding:28px var(--page-x) clamp(56px,8vw,96px);border-radius:var(--radius-lg) var(--radius-lg) 0 0;background:var(--overlay-hero),radial-gradient(120% 90% at 20% 20%,#7f9c73 0%,#56724f 45%,#3f5a41 100%)}

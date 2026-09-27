@@ -164,3 +164,13 @@ a.lesson{color:inherit;text-decoration:none}
 .class-card__media img[hidden]{display:none}
 .rating-pill{max-width:100%}
 @media (max-width:520px){.rating-pill__avatars{display:none}.rating-pill{padding-left:14px;gap:12px}}
+
+/* Form fields, password toggle, alert */
+.field{display:flex;flex-direction:column;gap:10px}
+.field__label{font-size:var(--fs-small);font-weight:var(--fw-medium);color:var(--ink-900)}
+.field__error{display:flex;gap:8px;align-items:center;font-size:13px;line-height:1.4;font-weight:var(--fw-medium);color:var(--error)}
+.password{position:relative}
+.password .input{padding-right:80px}
+.password__toggle{position:absolute;right:8px;top:8px;height:44px;padding:0 14px;border:0;background:transparent;font-family:var(--font-sans);font-size:var(--fs-small);font-weight:var(--fw-semibold);color:var(--forest-800);cursor:pointer}
+.alert{display:flex;gap:12px;align-items:flex-start;max-width:560px;padding:16px 20px;border-radius:var(--radius-sm);background:#f8ebe7;font-size:15px;line-height:1.5;color:#7a3322}
+.alert a{color:inherit;font-weight:var(--fw-semibold)}

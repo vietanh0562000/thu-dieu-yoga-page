@@ -25,11 +25,12 @@ src/
   pages/             one file per route (+ its CSS)
   components/        design-system components; port the rest when a page needs one
   content.ts         site copy + contact details (sample until replaced)
-  data/courses.ts    sample catalogue, shaped like the planned tables (phase 5 moves it to Supabase)
+  auth.tsx           session context, RequireAuth
+  lib/courses.ts     course types + queries (used by route loaders)
 public/images/       photos; see the README there
-  lib/supabase.ts    client (phase 5)
+  lib/supabase.ts    client
   video/             VideoPlayer + YouTubePlayer; the only code that knows the video host
-supabase/schema.sql  tables + RLS policies (phase 5)
+supabase/schema.sql  tables, RLS, triggers + sample courses; run once in the SQL Editor
 ```
 
 ## Data (Supabase)
@@ -71,7 +72,7 @@ Bank details come from env vars: `VITE_BANK_ID`, `VITE_BANK_ACCOUNT`, `VITE_BANK
 2. ✅ **Landing**: port Hero, Instructor, Classes carousel, VideoSection, Contact, plus images and needed components.
 3. ✅ **Classes + course detail**: on local data in `src/data/courses.ts`, shaped like the DB rows.
 4. ✅ **About.**
-5. **Supabase**: schema + RLS, auth (login/sign up), switch course data to queries.
+5. ✅ **Supabase**: schema + RLS, auth (login/sign up), switch course data to queries.
 6. **Purchase**: bank transfer dialog, VietQR, pending orders, access check.
 7. **Player**: YouTube embed via the IFrame API, lesson list, next lesson, resume position + completed.
 8. **Polish + deploy**: page titles/meta, 404, loading/error states, accessibility pass, hosting.

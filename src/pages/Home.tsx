@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLoaderData, useNavigate } from 'react-router';
 import { BenefitList } from '../components/BenefitList';
 import { CarouselPager } from '../components/CarouselPager';
 import { ClassCard } from '../components/ClassCard';
@@ -11,19 +11,20 @@ import { PlayButton } from '../components/PlayButton';
 import { RatingPill } from '../components/RatingPill';
 import { StatGroup } from '../components/StatGroup';
 import { BENEFITS, SITE, STATS } from '../content';
-import { COURSES, courseMeta } from '../data/courses';
+import { courseMeta, type Course } from '../lib/courses';
 import { usePageTitle, useT } from '../i18n';
 import { SiteHeader } from '../layout/SiteHeader';
 import './Home.css';
 
 export function Home() {
   usePageTitle();
+  const courses = useLoaderData() as Course[];
   return (
     <>
       <Hero />
       <main>
         <Instructor />
-        <CoursesCarousel />
+        <CoursesCarousel courses={courses} />
         <Practice />
         <Contact />
       </main>
@@ -74,7 +75,7 @@ function Instructor() {
   );
 }
 
-function CoursesCarousel() {
+function CoursesCarousel({ courses }: { courses: Course[] }) {
   const { t, tl } = useT();
   const track = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(0);
@@ -106,9 +107,9 @@ function CoursesCarousel() {
         <Link to="/classes" className="btn btn--outline btn--md">{t('home.allClasses')}</Link>
       </div>
       <div ref={track} className="carousel" onScroll={measure}>
-        {COURSES.map((c) => (
+        {courses.map((c) => (
           <div key={c.slug} className="carousel__item">
-            <ClassCard title={tl(c.title)} meta={courseMeta(c, t)} to={`/classes/${c.slug}`} image={c.cover} />
+            <ClassCard title={tl(c.title)} meta={courseMeta(c, t)} to={`/classes/${c.slug}`} image={c.cover_path ?? undefined} />
           </div>
         ))}
       </div>

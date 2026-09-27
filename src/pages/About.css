@@ -1,5 +1,5 @@
 .story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,84px);align-items:start}
-.story__photo{aspect-ratio:610/802;background-image:url(/images/instructor-luna.png)}
+.story__photo{aspect-ratio:610/802;background-image:url(/images/mermaid-waterfall.jpg)}
 .story__copy{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
 .story__text{margin:0;max-width:60ch;font-size:var(--fs-body-lg);line-height:var(--lh-body);text-wrap:pretty}
 .story__copy .stats{margin-top:20px}

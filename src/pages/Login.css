@@ -1,0 +1,5 @@
+.auth{display:flex;flex-direction:column;gap:24px;max-width:440px}
+.auth .alert{max-width:none}
+.auth__switch{align-self:flex-start;padding:0;border:0;background:none;font-family:var(--font-sans);font-size:var(--fs-small);font-weight:var(--fw-semibold);color:var(--forest-800);cursor:pointer}
+.auth__switch:hover{color:var(--ink-900)}
+.auth__sent{margin:0;max-width:52ch;font-size:var(--fs-body-lg);line-height:var(--lh-body)}
