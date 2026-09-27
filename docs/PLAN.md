@@ -13,6 +13,7 @@ Payment is a manual bank transfer: the admin confirms each transfer and grants a
 | `/about` | About | Instructor story, benefits, stats, testimonials |
 | `/login` | Login / sign up | Supabase email + password, one page with a toggle |
 | `/learn/:slug/:lessonId` | Player | Login + paid order required. YouTube embed, lesson list, progress |
+| `/admin` | Content admin | Admins only (`admins` table). Edits site copy stored in `site_content` |
 | `/style-guide` | Style guide | Kept for reference |
 
 ## Structure
@@ -24,13 +25,14 @@ src/
   layout/            SiteHeader (NavBar + mobile menu), PageHero, Footer
   pages/             one file per route (+ its CSS)
   components/        design-system components; port the rest when a page needs one
-  content.ts         site copy + contact details (sample until replaced)
+  content.ts         editable site copy: types, defaults, loader (overridden by /admin)
   auth.tsx           session context, RequireAuth
   lib/courses.ts     course types + queries (used by route loaders)
 public/images/       photos; see the README there
   lib/supabase.ts    client
   video/             VideoPlayer + YouTubePlayer; the only code that knows the video host
 supabase/schema.sql  tables, RLS, triggers + sample courses; run once in the SQL Editor
+supabase/admin.sql   admins + site_content; run once after schema.sql
 ```
 
 ## Data (Supabase)

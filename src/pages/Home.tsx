@@ -10,7 +10,7 @@ import { Input, Textarea } from '../components/Input';
 import { PlayButton } from '../components/PlayButton';
 import { RatingPill } from '../components/RatingPill';
 import { StatGroup } from '../components/StatGroup';
-import { BENEFITS, SITE, STATS } from '../content';
+import { useSiteContent } from '../content';
 import { courseMeta, type Course } from '../lib/courses';
 import { usePageTitle, useT } from '../i18n';
 import { SiteHeader } from '../layout/SiteHeader';
@@ -34,14 +34,15 @@ export function Home() {
 
 function Hero() {
   const { t, tl } = useT();
+  const { hero, stats } = useSiteContent();
   return (
     <section className="hero">
       <div className="hero__photo" />
       <SiteHeader />
       <div className="hero__body">
         <RatingPill />
-        <h1 className="hero__title">{t('page.home')}</h1>
-        <p className="hero__lead">{t('home.lead')}</p>
+        <h1 className="hero__title">{tl(hero.title)}</h1>
+        <p className="hero__lead">{tl(hero.lead)}</p>
         <div className="hero__actions">
           <Link to="/classes" className="btn btn--light btn--lg">{t('home.join')}</Link>
           <a href="#practice" className="btn btn--outline-light btn--lg">
@@ -51,7 +52,7 @@ function Hero() {
         </div>
       </div>
       <div className="hero__stats">
-        <StatGroup items={STATS.map((s) => ({ value: s.value, label: tl(s.label) }))} />
+        <StatGroup items={stats.map((s) => ({ value: s.value, label: tl(s.label) }))} />
       </div>
     </section>
   );
@@ -59,15 +60,16 @@ function Hero() {
 
 function Instructor() {
   const { t, tl } = useT();
+  const { instructor, benefits } = useSiteContent();
   return (
     <section className="section instructor">
       <div className="instructor__copy">
         <Eyebrow>{t('home.instructorEyebrow')}</Eyebrow>
         <p className="statement">
-          {t('home.instructorLead')}
-          <span className="statement__muted">{t('home.instructorLeadMuted')}</span>
+          {tl(instructor.lead)}
+          <span className="statement__muted">{tl(instructor.leadMuted)}</span>
         </p>
-        <BenefitList items={BENEFITS.map((b) => ({ title: tl(b.title), body: tl(b.body) }))} />
+        <BenefitList items={benefits.map((b) => ({ title: tl(b.title), body: tl(b.body) }))} />
         <Link to="/about" className="btn btn--primary btn--md">{t('home.aboutMore')}</Link>
       </div>
       <div className="photo instructor__photo" role="img" aria-label="Thu Diệu" />
@@ -123,26 +125,28 @@ function CoursesCarousel({ courses }: { courses: Course[] }) {
 }
 
 function Practice() {
-  const { t } = useT();
+  const { t, tl } = useT();
+  const { practice } = useSiteContent();
   const navigate = useNavigate();
   return (
     <section id="practice" className="practice">
       {/* ponytail: opens the catalogue; switch to an intro video in <VideoPlayer> once there is one */}
       <PlayButton size="min(590px, 72vw)" label={t('home.practiceAction')} onClick={() => navigate('/classes')} />
-      <p className="practice__caption">{t('home.practice')}</p>
+      <p className="practice__caption">{tl(practice.caption)}</p>
     </section>
   );
 }
 
 function Contact() {
-  const { t } = useT();
+  const { t, tl } = useT();
+  const { contact } = useSiteContent();
 
   // ponytail: opens the visitor's mail app; move to a Supabase table if messages should land in the dashboard
   const send = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const body = `${f.get('message')}\n\n${f.get('name')} · ${f.get('phone')} · ${f.get('email')}`;
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(t('form.subject'))}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(t('form.subject'))}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -152,10 +156,10 @@ function Contact() {
         <h2 className="contact__title">
           <span>{t('home.connect1')}</span> <span>{t('home.connect2')}</span>
         </h2>
-        <p className="contact__note">{t('home.connectNote')}</p>
+        <p className="contact__note">{tl(contact.note)}</p>
         <div className="contact__chips">
-          <ContactChip icon="phone" href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</ContactChip>
-          <ContactChip icon="envelope-simple" href={`mailto:${SITE.email}`}>{SITE.email}</ContactChip>
+          <ContactChip icon="phone" href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</ContactChip>
+          <ContactChip icon="envelope-simple" href={`mailto:${contact.email}`}>{contact.email}</ContactChip>
         </div>
       </div>
       <form className="contact__form" onSubmit={send}>

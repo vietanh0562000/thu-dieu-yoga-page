@@ -1,8 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { RequireAuth } from './auth';
+import { loadSiteContent } from './content';
 import { SiteLayout } from './layout/SiteLayout';
 import { getCourse, listCourses } from './lib/courses';
 import { About } from './pages/About';
+import { Admin } from './pages/Admin';
 import { Classes } from './pages/Classes';
 import { ComingSoon } from './pages/ComingSoon';
 import { CourseDetail } from './pages/CourseDetail';
@@ -14,7 +16,9 @@ import { StyleGuide } from './pages/StyleGuide';
 
 const router = createBrowserRouter([
   {
+    id: 'root',
     element: <SiteLayout />,
+    loader: loadSiteContent,
     errorElement: <RouteError />,
     hydrateFallbackElement: <div className="boot" />,
     children: [
@@ -28,6 +32,14 @@ const router = createBrowserRouter([
         element: (
           <RequireAuth>
             <ComingSoon title="page.learn" />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'admin',
+        element: (
+          <RequireAuth>
+            <Admin />
           </RequireAuth>
         ),
       },
