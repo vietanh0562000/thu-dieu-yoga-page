@@ -8,3 +8,5 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--forest-800);outline
 .muted{color:var(--sage-700)}
 .note{font-size:13px;line-height:1.4;color:var(--sage-700)}
 .small-muted{margin:0;font-size:var(--fs-small);line-height:1.5;color:var(--sage-700);max-width:720px}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none !important}

@@ -13,7 +13,7 @@ Payment is a manual bank transfer: the admin confirms each transfer and grants a
 | `/about` | About | Instructor story, benefits, stats, testimonials |
 | `/login` | Login / sign up | Supabase email + password, one page with a toggle |
 | `/learn/:slug/:lessonId` | Player | Login + paid order required. YouTube embed, lesson list, progress |
-| `/admin` | Content admin | Admins only (`admins` table). Edits site copy stored in `site_content` |
+| `/admin` | Admin | Admins only (`admins` table). Tabs: home / about / contact copy (`site_content`), courses + lessons + YouTube IDs + cover upload |
 | `/style-guide` | Style guide | Kept for reference |
 
 ## Structure
@@ -33,6 +33,7 @@ public/images/       photos; see the README there
   video/             VideoPlayer + YouTubePlayer; the only code that knows the video host
 supabase/schema.sql  tables, RLS, triggers + sample courses; run once in the SQL Editor
 supabase/admin.sql   admins + site_content; run once after schema.sql
+supabase/admin-courses.sql  admin write access to courses/lessons/videos, `covers` storage bucket; run after admin.sql
 ```
 
 ## Data (Supabase)

@@ -26,3 +26,14 @@ export async function resolveVideoSource(row: LessonVideoRow): Promise<VideoSour
       return { provider: 'youtube', videoId: row.video_ref };
   }
 }
+
+/**
+ * Accepts a bare video ID or any common YouTube link (watch, youtu.be, embed, shorts, live)
+ * and returns the 11-character ID, or null.
+ */
+export function parseYouTubeId(input: string): string | null {
+  const text = input.trim();
+  if (/^[\w-]{11}$/.test(text)) return text;
+  const match = text.match(/(?:youtu\.be\/|[?&]v=|\/(?:embed|shorts|live)\/)([\w-]{11})(?![\w-])/);
+  return match ? match[1] : null;
+}
