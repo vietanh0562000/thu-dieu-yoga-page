@@ -1,4 +1,0 @@
-html,body{margin:0;background:var(--bg-page);color:var(--text-body);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;letter-spacing:var(--ls-body)}
-*,*::before,*::after{box-sizing:border-box}
-a{color:var(--text-accent);text-decoration:none}
-a:hover{color:var(--forest-800)}

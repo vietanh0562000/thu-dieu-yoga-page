@@ -1,9 +1,0 @@
-:root{
---font-sans:'Hanken Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;--font-display:var(--font-sans);
---fw-light:300;--fw-regular:400;--fw-medium:500;--fw-semibold:600;--fw-bold:700;
---fs-display-xl:132px;--fs-display:116px;--fs-h2:34px;--fs-h3:26px;--fs-h4:21px;--fs-lead:22px;--fs-body-lg:18px;--fs-body:16px;--fs-small:14px;--fs-eyebrow:14px;--fs-nav:13px;--fs-number:36px;--fs-stat:32px;
---lh-display:.94;--lh-tight:1.15;--lh-snug:1.25;--lh-body:1.5;
---ls-display:-.065em;--ls-heading:-.045em;--ls-body:-.02em;--ls-eyebrow:-.02em;--ls-nav:0;
---type-eyebrow:var(--fw-bold) var(--fs-eyebrow)/1 var(--font-sans);
---type-nav:var(--fw-medium) var(--fs-nav)/1 var(--font-sans);
-}

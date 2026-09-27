@@ -1,0 +1,29 @@
+:root{--page-x:clamp(16px,8vw,var(--gutter))}
+
+/* Header: full NavBar on wide screens, MobileNav below 960px */
+.site-header{position:relative;z-index:20}
+.site-header__mobile{display:none}
+@media (max-width:960px){
+  .site-header__desktop{display:none}
+  .site-header__mobile{display:block}
+}
+.lang-switch{height:var(--control-h-sm);min-width:var(--control-h-sm);padding:0 12px;border-radius:var(--radius-pill);font:var(--type-nav);color:var(--forest-900);cursor:pointer}
+.mobile-nav__sheet .lang-switch{align-self:flex-start;margin-top:16px;border-color:var(--line)}
+
+/* Inner page hero */
+.page-hero{position:relative;margin:10px 10px 0;padding:28px var(--page-x) clamp(56px,8vw,96px);border-radius:var(--radius-lg) var(--radius-lg) 0 0;background:var(--overlay-hero),radial-gradient(120% 90% at 20% 20%,#7f9c73 0%,#56724f 45%,#3f5a41 100%)}
+.page-hero__body{margin-top:clamp(72px,12vw,160px);display:flex;flex-direction:column;gap:24px}
+.page-hero__title{margin:0;font-size:clamp(44px,7vw,96px);font-weight:var(--fw-light);line-height:var(--lh-display);letter-spacing:var(--ls-display);color:var(--white)}
+
+/* Page body */
+.page{max-width:var(--container-max);margin:0 auto;padding:clamp(48px,8vw,120px) var(--page-x)}
+
+/* Footer */
+.site-footer{background:var(--ink-900);color:var(--white);padding:74px var(--page-x) 40px}
+.site-footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px}
+.site-footer__tagline{margin:32px 0 0;max-width:260px;font-size:15px;line-height:1.45;letter-spacing:-.04em}
+.site-footer__heading{margin-bottom:28px;font-size:17px;letter-spacing:-.03em}
+.site-footer__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px}
+.site-footer__list a{display:inline-flex;align-items:center;gap:14px;font-size:15px;color:var(--white)}
+.site-footer__list a:hover{color:var(--sage-300)}
+.site-footer__legal{margin:56px 0 0;padding-top:24px;border-top:1px solid rgba(253,255,252,.18);font-size:13px;color:var(--text-on-dark-muted)}

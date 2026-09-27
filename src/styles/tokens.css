@@ -1,0 +1,44 @@
+/* Thu Diệu Yoga design tokens, from the claude.ai/design project. */
+
+/* colors */
+:root{
+--sage-50:#f1f8ee;--sage-100:#e5ece2;--sage-200:#cfdecb;--sage-300:#a8c8a4;--sage-400:#9fc69e;--sage-500:#849b7f;--sage-600:#6a8466;--sage-700:#4e594a;
+--forest-500:#5a6f57;--forest-600:#465249;--forest-700:#405940;--forest-800:#2b3a2c;--forest-900:#182918;
+--ink-900:#141a12;--ink-950:#0b100c;
+--paper:#fafbf8;--paper-2:#f4f6f1;--white:#fdfffc;--line:#ecedea;--gray-300:#c9cac6;--gray-400:#a8aaa6;--gray-500:#8b8d88;
+--star:#fcc805;--error:#c2553f;
+--bg-page:var(--paper);--bg-inverse:var(--ink-900);--surface-card:var(--white);--surface-tint:var(--sage-50);--surface-tint-2:var(--sage-100);
+--surface-glass:rgba(255,255,255,.28);--surface-glass-dark:rgba(70,82,73,.72);
+--text-strong:var(--ink-900);--text-heading:var(--forest-800);--text-body:#1c231a;--text-muted:var(--gray-400);--text-accent:var(--sage-600);
+--text-on-dark:var(--white);--text-on-dark-muted:rgba(253,255,252,.72);
+--action-primary:var(--sage-300);--action-primary-hover:#98bd94;--action-primary-text:#1e3717;--action-dark:var(--ink-950);--action-dark-hover:#232b23;
+--border-subtle:var(--line);--border-card:#b9cdb5;--border-on-dark:rgba(253,255,252,.85);--border-on-dark-soft:rgba(253,255,252,.35);
+}
+
+/* typography */
+:root{
+--font-sans:'Hanken Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;--font-display:var(--font-sans);
+--fw-light:300;--fw-regular:400;--fw-medium:500;--fw-semibold:600;--fw-bold:700;
+--fs-display-xl:132px;--fs-display:116px;--fs-h2:34px;--fs-h3:26px;--fs-h4:21px;--fs-lead:22px;--fs-body-lg:18px;--fs-body:16px;--fs-small:14px;--fs-eyebrow:14px;--fs-nav:13px;--fs-number:36px;--fs-stat:32px;
+--lh-display:.94;--lh-tight:1.15;--lh-snug:1.25;--lh-body:1.5;
+--ls-display:-.065em;--ls-heading:-.045em;--ls-body:-.02em;--ls-eyebrow:-.02em;--ls-nav:0;
+--type-eyebrow:var(--fw-bold) var(--fs-eyebrow)/1 var(--font-sans);
+--type-nav:var(--fw-medium) var(--fs-nav)/1 var(--font-sans);
+}
+
+/* spacing */
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;
+--container-max:1260px;--gutter:125px;--section-y:160px;--control-h:60px;--control-h-sm:46px;--nav-h:50px;
+}
+
+/* effects */
+:root{
+--radius-xs:3px;--radius-sm:6px;--radius-md:10px;--radius-lg:14px;--radius-pill:999px;
+--shadow-none:none;--shadow-soft:0 1px 2px rgba(20,26,18,.06);--shadow-float:0 12px 40px rgba(20,26,18,.18);
+--blur-glass:blur(14px) saturate(1.1);
+--overlay-hero:linear-gradient(180deg,rgba(64,89,64,0) 30%,rgba(64,89,64,.85) 100%);
+--overlay-left:linear-gradient(90deg,rgba(40,60,40,.55) 0%,rgba(40,60,40,0) 60%);
+--overlay-contact:linear-gradient(180deg,rgba(20,26,18,.1) 0%,rgba(20,26,18,.35) 45%,rgba(90,111,87,.95) 100%);
+--ease-out:cubic-bezier(.22,.61,.36,1);--dur-fast:150ms;--dur-base:250ms;--dur-slow:500ms;
+}
