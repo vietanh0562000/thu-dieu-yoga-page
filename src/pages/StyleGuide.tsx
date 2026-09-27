@@ -282,7 +282,7 @@ function CardsSection() {
       <Eyebrow>05 · Cards</Eyebrow>
       <div className="card-grid">
         <div className="stack stack--tight">
-          <ClassCard location="Hatha · Beginner · 28 min" title="Morning Flow" />
+          <ClassCard meta="Hatha · Beginner · 28 min" title="Morning Flow" to="/classes/morning-flow" />
           <span className="note">ClassCard · photo slot empty until real images arrive</span>
         </div>
         <div className="stack stack--tight">

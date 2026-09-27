@@ -1,0 +1,14 @@
+/* Catalogue */
+.catalog{display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:26px}
+
+/* Course detail */
+.course{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:clamp(40px,6vw,84px);align-items:start}
+.course__main{display:flex;flex-direction:column}
+.course__description{margin:28px 0 0;max-width:62ch;font-size:var(--fs-body-lg);line-height:var(--lh-body);text-wrap:pretty}
+.course__heading{margin:clamp(40px,6vw,72px) 0 16px;font-size:var(--fs-h4);font-weight:var(--fw-semibold);letter-spacing:var(--ls-heading);color:var(--ink-900)}
+.course__aside{position:sticky;top:24px;overflow:hidden;border:1px solid var(--border-card);border-radius:var(--radius-xs);background:var(--sage-100)}
+.course__cover{aspect-ratio:611/348;border-radius:0}
+.course__buy{display:flex;flex-direction:column;gap:12px;padding:24px}
+.course__price{font-size:var(--fs-stat);font-weight:var(--fw-medium);letter-spacing:-.02em;color:var(--forest-800)}
+@media (max-width:900px){.course{grid-template-columns:1fr}.course__aside{position:static;order:-1}}

@@ -3,3 +3,8 @@ html,body{margin:0;background:var(--bg-page);color:var(--text-body);font-family:
 a{color:var(--forest-800);text-decoration:none}
 a:hover{color:var(--ink-900)}
 button:focus-visible,a:focus-visible{outline:2px solid var(--forest-800);outline-offset:2px}
+
+/* Text utilities */
+.muted{color:var(--sage-700)}
+.note{font-size:13px;line-height:1.4;color:var(--sage-700)}
+.small-muted{margin:0;font-size:var(--fs-small);line-height:1.5;color:var(--sage-700);max-width:720px}

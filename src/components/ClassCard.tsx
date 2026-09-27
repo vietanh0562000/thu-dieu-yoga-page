@@ -1,23 +1,30 @@
-import { IconButton } from './IconButton';
+import { Link } from 'react-router';
+import { Icon } from './Icon';
 
 interface ClassCardProps {
   title: string;
-  location: string;
+  meta: string;
+  to: string;
   image?: string;
-  onOpen?: () => void;
 }
 
-export function ClassCard({ title, location, image, onOpen }: ClassCardProps) {
+/** The whole card is clickable through the title link. */
+export function ClassCard({ title, meta, to, image }: ClassCardProps) {
   return (
-    <div className="class-card">
-      <div className="class-card__media">{image && <img src={image} alt={title} />}</div>
+    <article className="class-card">
+      <div className="class-card__media">
+        {/* hide a missing photo so the sage placeholder shows instead of a broken image */}
+        {image && <img src={image} alt="" onError={(e) => (e.currentTarget.hidden = true)} />}
+      </div>
       <div className="class-card__footer">
         <div>
-          <div className="class-card__meta">{location}</div>
-          <div className="class-card__title">{title}</div>
+          <div className="class-card__meta">{meta}</div>
+          <Link to={to} className="class-card__title class-card__link">{title}</Link>
         </div>
-        <IconButton label={`Open ${title}`} onClick={onOpen} />
+        <span className="icon-btn icon-btn--dark class-card__arrow" aria-hidden="true">
+          <Icon name="arrow-right" size={22} />
+        </span>
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,6 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { SiteLayout } from './layout/SiteLayout';
+import { About } from './pages/About';
+import { Classes } from './pages/Classes';
 import { ComingSoon } from './pages/ComingSoon';
+import { CourseDetail } from './pages/CourseDetail';
+import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { StyleGuide } from './pages/StyleGuide';
 
@@ -8,10 +12,10 @@ const router = createBrowserRouter([
   {
     element: <SiteLayout />,
     children: [
-      { index: true, element: <ComingSoon title="page.home" /> },
-      { path: 'classes', element: <ComingSoon title="page.classes" /> },
-      { path: 'classes/:slug', element: <ComingSoon title="page.course" /> },
-      { path: 'about', element: <ComingSoon title="page.about" /> },
+      { index: true, element: <Home /> },
+      { path: 'classes', element: <Classes /> },
+      { path: 'classes/:slug', element: <CourseDetail /> },
+      { path: 'about', element: <About /> },
       { path: 'login', element: <ComingSoon title="page.login" /> },
       { path: 'learn/:slug/:lessonId?', element: <ComingSoon title="page.learn" /> },
       { path: '*', element: <NotFound /> },

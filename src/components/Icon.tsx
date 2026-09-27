@@ -14,7 +14,8 @@ function iconUrl(name: string, set: IconSet) {
 interface IconProps {
   name: string;
   set?: IconSet;
-  size?: number;
+  /** px, or any CSS length */
+  size?: number | string;
   color?: string;
   style?: CSSProperties;
 }

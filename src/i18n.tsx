@@ -2,6 +2,9 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 
 export type Lang = 'vi' | 'en';
 
+/** Content stored in both languages, e.g. course titles. */
+export type Localized = Record<Lang, string>;
+
 const vi = {
   'nav.classes': 'Lớp học',
   'nav.about': 'Giới thiệu',
@@ -15,7 +18,6 @@ const vi = {
   'footer.rights': 'Bảo lưu mọi quyền.',
   'page.home': 'Tìm lại sự cân bằng',
   'page.classes': 'Lớp học trực tuyến',
-  'page.course': 'Chi tiết khoá học',
   'page.about': 'Giới thiệu',
   'page.login': 'Đăng nhập',
   'page.learn': 'Phòng học',
@@ -24,6 +26,52 @@ const vi = {
   'common.backHome': 'Về trang chủ',
   'video.error': 'Không tải được video. Hãy tắt trình chặn quảng cáo hoặc thử lại.',
   'video.openYouTube': 'Xem trên YouTube',
+  'unit.lessons': 'bài học',
+  'unit.min': 'phút',
+  'level.all': 'Tất cả',
+  'level.beginner': 'Cơ bản',
+  'level.intermediate': 'Trung cấp',
+  'level.advanced': 'Nâng cao',
+  'pager.label': 'Chuyển trang',
+  'pager.page': 'Trang',
+  'home.lead': 'Kết nối lại cơ thể và tâm trí qua những buổi tập yoga chánh niệm, phù hợp với mọi trình độ.',
+  'home.join': 'Tham gia lớp học',
+  'home.watch': 'Xem giới thiệu',
+  'home.instructorEyebrow': 'Giáo viên của bạn',
+  'home.instructorLead': 'Xin chào, mình là Thu Diệu, giáo viên yoga được chứng nhận với hơn 10 năm kinh nghiệm',
+  'home.instructorLeadMuted': ' giúp mọi người tìm thấy sự bình yên, sức mạnh và cân bằng qua chuyển động chánh niệm.',
+  'home.aboutMore': 'Tìm hiểu thêm',
+  'home.classesEyebrow': 'Lớp học',
+  'home.classesTitle': 'Khoá học trực tuyến',
+  'home.allClasses': 'Xem tất cả khoá học',
+  'home.practice': 'Luyện tập mọi lúc, mọi nơi',
+  'home.practiceAction': 'Xem các khoá học',
+  'home.contactEyebrow': 'Liên hệ',
+  'home.connect1': 'Hãy',
+  'home.connect2': 'kết nối',
+  'home.connectNote': 'Giữ liên lạc nhé — hành trình tìm lại cân bằng của bạn bắt đầu từ đây.',
+  'form.name': 'Họ và tên',
+  'form.phone': 'Số điện thoại',
+  'form.email': 'Email',
+  'form.message': 'Lời nhắn',
+  'form.send': 'Gửi lời nhắn',
+  'form.subject': 'Lời nhắn từ website',
+  'classes.lead': 'Học yoga tại nhà cùng Thu Diệu, theo nhịp độ của riêng bạn.',
+  'classes.filter': 'Lọc khoá học',
+  'classes.empty': 'Chưa có khoá học phù hợp.',
+  'course.content': 'Nội dung khoá học',
+  'course.free': 'Học thử miễn phí',
+  'course.locked': 'Cần đăng ký',
+  'course.price': 'Học phí',
+  'course.enroll': 'Đăng ký khoá học',
+  'course.anyDevice': 'Xem trên điện thoại, máy tính bảng hoặc máy tính.',
+  'about.lead': 'Yoga không phải là đích đến, mà là cách trở về với chính mình.',
+  'about.storyEyebrow': 'Câu chuyện',
+  'about.benefitsTitle': 'Yoga mang lại cho bạn',
+  'about.testimonialsTitle': 'Học viên nói gì',
+  'about.memberSince': 'Học viên từ',
+  'about.ctaTitle': 'Sẵn sàng bắt đầu?',
+  'about.ctaBody': 'Mỗi khoá học đều có bài học thử miễn phí. Hãy thử trước khi quyết định.',
 };
 
 export type TKey = keyof typeof vi;
@@ -41,7 +89,6 @@ const en: Record<TKey, string> = {
   'footer.rights': 'All rights reserved.',
   'page.home': 'Find Your Inner Balance',
   'page.classes': 'Online Classes',
-  'page.course': 'Course Details',
   'page.about': 'About',
   'page.login': 'Log In',
   'page.learn': 'Classroom',
@@ -50,6 +97,52 @@ const en: Record<TKey, string> = {
   'common.backHome': 'Back to Home',
   'video.error': 'Couldn’t load the video. Turn off ad blockers or try again.',
   'video.openYouTube': 'Watch on YouTube',
+  'unit.lessons': 'lessons',
+  'unit.min': 'min',
+  'level.all': 'All Levels',
+  'level.beginner': 'Beginner',
+  'level.intermediate': 'Intermediate',
+  'level.advanced': 'Advanced',
+  'pager.label': 'Change page',
+  'pager.page': 'Page',
+  'home.lead': 'Reconnect with your body and mind through mindful yoga sessions designed for all levels.',
+  'home.join': 'Join Class Now',
+  'home.watch': 'Watch Demo',
+  'home.instructorEyebrow': 'Meet your instructor',
+  'home.instructorLead': 'Hi, I’m Thu Diệu, a certified yoga instructor with over 10 years',
+  'home.instructorLeadMuted': ' of experience helping people find calm, strength, and balance through mindful movement.',
+  'home.aboutMore': 'Learn More',
+  'home.classesEyebrow': 'Classes',
+  'home.classesTitle': 'Online Courses',
+  'home.allClasses': 'See All Courses',
+  'home.practice': 'Practice anytime, anywhere',
+  'home.practiceAction': 'Browse the courses',
+  'home.contactEyebrow': 'Contact',
+  'home.connect1': 'Let’s',
+  'home.connect2': 'Connect',
+  'home.connectNote': 'Let’s stay connected — your journey to balance starts here.',
+  'form.name': 'Name',
+  'form.phone': 'Phone Number',
+  'form.email': 'Email',
+  'form.message': 'Message',
+  'form.send': 'Send Message',
+  'form.subject': 'Message from the website',
+  'classes.lead': 'Practise yoga at home with Thu Diệu, at your own pace.',
+  'classes.filter': 'Filter courses',
+  'classes.empty': 'No courses match this filter yet.',
+  'course.content': 'Course Content',
+  'course.free': 'Free preview',
+  'course.locked': 'Enrol to unlock',
+  'course.price': 'Price',
+  'course.enroll': 'Enrol Now',
+  'course.anyDevice': 'Watch on your phone, tablet or computer.',
+  'about.lead': 'Yoga isn’t a destination, it’s a way back to yourself.',
+  'about.storyEyebrow': 'My story',
+  'about.benefitsTitle': 'What yoga gives you',
+  'about.testimonialsTitle': 'What students say',
+  'about.memberSince': 'Member since',
+  'about.ctaTitle': 'Ready to begin?',
+  'about.ctaBody': 'Every course has a free preview lesson. Try it before you decide.',
 };
 
 const dictionaries: Record<Lang, Record<TKey, string>> = { vi, en };
@@ -66,7 +159,11 @@ function initialLang(): Lang {
 interface LangContext {
   lang: Lang;
   setLang: (lang: Lang) => void;
+  /** UI string */
   t: (key: TKey) => string;
+  /** content string */
+  tl: (text: Localized) => string;
+  formatPrice: (vnd: number) => string;
 }
 
 const Ctx = createContext<LangContext | null>(null);
@@ -83,11 +180,24 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [lang]);
 
-  return <Ctx.Provider value={{ lang, setLang, t: (key) => dictionaries[lang][key] }}>{children}</Ctx.Provider>;
+  const value: LangContext = {
+    lang,
+    setLang,
+    t: (key) => dictionaries[lang][key],
+    tl: (text) => text[lang],
+    formatPrice: (vnd) => new Intl.NumberFormat(lang === 'vi' ? 'vi-VN' : 'en-US', { style: 'currency', currency: 'VND' }).format(vnd),
+  };
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
 export function useT() {
   const ctx = useContext(Ctx);
   if (!ctx) throw new Error('useT must be used inside <LanguageProvider>');
   return ctx;
+}
+
+export function usePageTitle(title?: string) {
+  useEffect(() => {
+    document.title = title ? `${title} · Thu Diệu Yoga` : 'Thu Diệu Yoga';
+  }, [title]);
 }

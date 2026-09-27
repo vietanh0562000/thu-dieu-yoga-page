@@ -1,14 +1,9 @@
 import { Link } from 'react-router';
 import { Icon } from '../components/Icon';
 import { Wordmark } from '../components/Wordmark';
+import { SITE } from '../content';
 import { useT } from '../i18n';
 
-// ponytail: placeholder profile URLs, replace with the real accounts
-const SOCIAL = [
-  { icon: 'facebook', label: 'Facebook', href: 'https://facebook.com' },
-  { icon: 'instagram', label: 'Instagram', href: 'https://instagram.com' },
-  { icon: 'x', label: 'X', href: 'https://x.com' },
-];
 
 export function Footer() {
   const { t } = useT();
@@ -30,7 +25,7 @@ export function Footer() {
         <div>
           <div className="site-footer__heading">{t('footer.follow')}</div>
           <ul className="site-footer__list">
-            {SOCIAL.map((s) => (
+            {SITE.social.map((s) => (
               <li key={s.icon}>
                 <a href={s.href} target="_blank" rel="noreferrer">
                   <Icon name={s.icon} set="brand" size={19} color="var(--white)" />
