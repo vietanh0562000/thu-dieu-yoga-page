@@ -41,9 +41,9 @@ function Hero() {
       <SiteHeader />
       <div className="hero__body">
         <RatingPill />
-        <h1 className="hero__title">{tl(hero.title)}</h1>
-        <p className="hero__lead">{tl(hero.lead)}</p>
-        <div className="hero__actions">
+        <h1 className="hero__title fade-in-up">{tl(hero.title)}</h1>
+        <p className="hero__lead fade-in-up">{tl(hero.lead)}</p>
+        <div className="hero__actions fade-in-up">
           <Link to="/classes" className="btn btn--light btn--lg">{t('home.join')}</Link>
           <a href="#practice" className="btn btn--outline-light btn--lg">
             <Icon name="play" size={22} />
@@ -62,7 +62,7 @@ function Instructor() {
   const { t, tl } = useT();
   const { instructor, benefits } = useSiteContent();
   return (
-    <section className="section instructor">
+    <section className="section instructor fade-in-up">
       <div className="instructor__copy">
         <Eyebrow>{t('home.instructorEyebrow')}</Eyebrow>
         <p className="statement">
@@ -102,7 +102,7 @@ function CoursesCarousel({ courses }: { courses: Course[] }) {
   };
 
   return (
-    <section className="section">
+    <section className="section fade-in-up">
       <Eyebrow>{t('home.classesEyebrow')}</Eyebrow>
       <div className="section__head">
         <h2 className="section__title">{t('home.classesTitle')}</h2>
@@ -129,7 +129,7 @@ function Practice() {
   const { practice } = useSiteContent();
   const navigate = useNavigate();
   return (
-    <section id="practice" className="practice">
+    <section id="practice" className="practice fade-in-up">
       {/* ponytail: opens the catalogue; switch to an intro video in <VideoPlayer> once there is one */}
       <PlayButton size="min(590px, 72vw)" label={t('home.practiceAction')} onClick={() => navigate('/classes')} />
       <p className="practice__caption">{tl(practice.caption)}</p>
@@ -150,7 +150,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact fade-in-up">
       <div className="contact__intro">
         <Eyebrow tone="light">{t('home.contactEyebrow')}</Eyebrow>
         <h2 className="contact__title">

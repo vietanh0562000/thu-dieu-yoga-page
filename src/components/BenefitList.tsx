@@ -7,12 +7,12 @@ export function BenefitList({ items }: { items: { title: string; body: string }[
     <div className="benefits">
       {items.map((item, i) =>
         i === open ? (
-          <div key={i} className="benefits__open">
+          <div key={i} className="benefits__open scale-in">
             <div className="benefits__title">{item.title}</div>
             <p className="benefits__body">{item.body}</p>
           </div>
         ) : (
-          <button key={i} type="button" className="benefits__item" aria-expanded="false" onClick={() => setOpen(i)}>
+          <button key={i} type="button" className="benefits__item opacity-smooth" aria-expanded="false" onClick={() => setOpen(i)}>
             <span className="benefits__num">{String(i + 1).padStart(2, '0')}</span>
             {item.title}
           </button>

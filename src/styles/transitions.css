@@ -1,0 +1,179 @@
+/* Smooth transition utilities for Thu Diệu Yoga */
+
+/* ───── Card & Container Transitions ───── */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.320, 1),
+              box-shadow 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-hover:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ───── Button Transitions ───── */
+.btn-smooth {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.btn-smooth:hover {
+  transform: translateY(-2px);
+}
+
+.btn-smooth:active {
+  transform: translateY(0);
+}
+
+/* ───── Link Transitions ───── */
+.link-smooth {
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Underline animation from left to right */
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ───── Form Input Transitions ───── */
+.input-smooth {
+  transition: border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              background-color 0.2s ease;
+}
+
+.input-smooth:focus {
+  border-color: currentColor;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ───── Image & Overlay Transitions ───── */
+.image-hover {
+  transition: filter 0.3s ease;
+}
+
+.image-hover:hover {
+  filter: brightness(0.95);
+}
+
+.image-overlay {
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* ───── Opacity Transitions ───── */
+.opacity-smooth {
+  transition: opacity 0.3s ease;
+}
+
+/* ───── Transform Transitions ───── */
+.transform-smooth {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* ───── Page Navigation Transitions ───── */
+.page-enter {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.page-exit {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ───── Accordion Transitions ───── */
+.accordion-item {
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* ───── Modal/Overlay Transitions ───── */
+.modal-overlay {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay-enter {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-overlay-exit {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+.modal-content {
+  animation: scaleIn 0.4s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ───── Disabled States ───── */
+.disabled-transition {
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+}
+
+/* ───── Loading States ───── */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ───── Respect Motion Preferences ───── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ───── Easing Presets ───── */
+/* Use with: animation-timing-function or transition-timing-function */
+/*
+  .ease-smooth { timing-function: cubic-bezier(0.23, 1, 0.320, 1); }
+  .ease-gentle { timing-function: cubic-bezier(0.39, 0.575, 0.565, 1); }
+  .ease-bounce { timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+*/

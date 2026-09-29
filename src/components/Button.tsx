@@ -15,7 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button({ variant = 'primary', size = 'md', fullWidth, icon, iconRight, className = '', type = 'button', children, ...rest }: ButtonProps) {
-  const classes = `btn btn--${variant} btn--${size}${fullWidth ? ' btn--full' : ''} ${className}`;
+  const classes = `btn btn--${variant} btn--${size}${fullWidth ? ' btn--full' : ''} btn-smooth ${className}`;
   return (
     <button type={type} className={classes} {...rest}>
       {icon && <Icon name={icon} size={ICON_SIZE[size]} />}

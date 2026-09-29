@@ -11,7 +11,7 @@ interface ClassCardProps {
 /** The whole card is clickable through the title link. */
 export function ClassCard({ title, meta, to, image }: ClassCardProps) {
   return (
-    <article className="class-card">
+    <article className="class-card card-hover fade-in-up stagger-item">
       <div className="class-card__media">
         {/* hide a missing photo so the sage placeholder shows instead of a broken image */}
         {image && <img src={image} alt="" onError={(e) => (e.currentTarget.hidden = true)} />}
