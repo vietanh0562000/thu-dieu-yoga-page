@@ -1,5 +1,6 @@
 import { Link, useLoaderData, useSearchParams } from 'react-router';
 import { Icon } from '../components/Icon';
+import { ScrollReveal } from '../components/ScrollReveal';
 import { STYLE_LABEL, totalMinutes, type Course, type Level, type YogaStyle } from '../lib/courses';
 import { useT } from '../i18n';
 import { PageHero } from '../layout/PageHero';
@@ -24,24 +25,30 @@ export function Classes() {
         <p className="page-hero__lead">{t('classes.lead')}</p>
       </PageHero>
       <main className="page catalog">
-        <div className="catalog__heading">
-          <div className="catalog__pill">{t('classes.filter')}</div>
-          <h2 className="catalog__title">{t('classes.subtitle')}</h2>
-          <p className="catalog__lead">{t('classes.subtitleLead')}</p>
-        </div>
+        <ScrollReveal>
+          <div className="catalog__heading">
+            <div className="catalog__pill">{t('classes.filter')}</div>
+            <h2 className="catalog__title">{t('classes.subtitle')}</h2>
+            <p className="catalog__lead">{t('classes.subtitleLead')}</p>
+          </div>
+        </ScrollReveal>
 
-        <div className="chips" role="group" aria-label={t('classes.filter')}>
-          {FILTERS.map((f) => (
-            <button key={f} type="button" className="chip" aria-pressed={filter === f} onClick={() => setParams(f === 'all' ? {} : { filter: f }, { replace: true })}>
-              {label(f)}
-            </button>
-          ))}
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div className="chips" role="group" aria-label={t('classes.filter')}>
+            {FILTERS.map((f) => (
+              <button key={f} type="button" className="chip" aria-pressed={filter === f} onClick={() => setParams(f === 'all' ? {} : { filter: f }, { replace: true })}>
+                {label(f)}
+              </button>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {courses.length ? (
           <div className="course-list">
             {courses.map((c, i) => (
-              <CourseRow key={c.slug} course={c} index={i + 1} />
+              <ScrollReveal key={c.slug} delay={i * 0.06}>
+                <CourseRow course={c} index={i + 1} />
+              </ScrollReveal>
             ))}
           </div>
         ) : (

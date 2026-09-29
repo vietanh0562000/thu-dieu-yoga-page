@@ -10,17 +10,16 @@ export interface NavItem {
 interface NavBarProps {
   links: NavItem[];
   cta: NavItem;
-  /** rendered before the CTA, e.g. a language switch */
   extra?: ReactNode;
 }
 
 export function NavBar({ links, cta, extra }: NavBarProps) {
   return (
     <nav className="navbar">
-      <Link to="/" className="glass navbar__brand">
+      <Link to="/" className="navbar__brand">
         <Wordmark />
       </Link>
-      <div className="glass navbar__links">
+      <div className="navbar__links">
         {links.map((l) => (
           <NavLink key={l.to} to={l.to} className="navbar__link">
             {l.label}
@@ -29,7 +28,7 @@ export function NavBar({ links, cta, extra }: NavBarProps) {
       </div>
       <div className="navbar__actions">
         {extra}
-        <Link to={cta.to} className="btn btn--dark btn--md">{cta.label}</Link>
+        <Link to={cta.to} className="navbar__cta">{cta.label}</Link>
       </div>
     </nav>
   );
